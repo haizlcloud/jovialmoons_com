@@ -4,6 +4,11 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Jovial Moons</title>
+  <!-- the Jovial Moons mark (jovialmoons-kit brand/logo): the tab, a bookmark, a phone's home screen -->
+  <link rel="icon" href="favicon.ico" sizes="any">
+  <link rel="icon" href="icon.svg" type="image/svg+xml">
+  <link rel="apple-touch-icon" href="apple-touch-icon.png">
+  <meta name="theme-color" content="#0a0a0f">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&family=Inter:wght@300;400&display=swap">
@@ -139,12 +144,13 @@
     }
     
     .footer {
-      padding: 60px 24px 40px;
+      padding: 56px 24px 40px;
       text-align: center;
       border-top: 1px solid rgba(255,255,255,0.08);
       font-size: 0.875rem;
-      opacity: 0.6;
+      color: rgba(245, 245, 245, 0.6);
     }
+    .footer .mark { display: block; width: 58px; margin: 0 auto 14px; }
     
     .footer a.testers {
       color: inherit;
@@ -226,6 +232,7 @@
   </section>
 
   <footer class="footer">
+    <img class="mark" src="mark.svg" alt="Jovial Moons">
     © Jovial Moons · <a class="testers" href="https://testers.jovialmoons.com/">Testers</a>
   </footer>
 
@@ -248,30 +255,32 @@
     // near half is out of sight: a moon rises beside the planet, crosses the sky (a little smaller at the top of its arc,
     // the far side) and sets on the other side — or, an orbit lower than the limb, passes BEHIND Jupiter, which is drawn
     // over the moons. The four big moons are the Galilean ones, Io : Europa : Ganymede kept 1 : 2 : 4 as the real ones
-    // are (Laplace resonance), Ganymede in bronze; the small ones are the outer moons, some going the other way round
+    // are (Laplace resonance); the small ones are the outer moons, some going the other way round
     // (retrograde, as Jupiter's irregular moons do). Sunlight comes from the left, so every moon's crescent of shade is
     // on its right wherever it is. Transforms and opacity only; still under reduced motion.
     (function () {
       var W = 3072, H = 1536, CX = 1539.5, CY = 1556.5;
+      // the Jovial Moons mark's four colours (jovialmoons-kit brand/logo.py): each [lit, shade — 28% toward black]
       var PAL = {
-        lilac:  ['#b7b5ca', '#918eaa'], peri: ['#9b97d7', '#7670ba'], gold: ['#b7a783', '#887a5e'],
-        violet: ['#7a73aa', '#58517c'], bronze: ['#c99268', '#94603f']
+        coral: ['#e76f51', '#a6503a'], sand: ['#f4a261', '#b07546'],
+        peri:  ['#a29dff', '#7571b8'], cyan: ['#4fd6e0', '#399aa1']
       };
       // a, b: the orbit's half width and height (picture px); r: the moon's radius; T: seconds round; th: where it starts
       var MOONS = [
-        { name: 'Io',       a:  820, b:  566, r: 22, pal: 'gold',   T:  75, th: 2.40 },   // below the limb's top: passes behind Jupiter
-        { name: 'Europa',   a: 1060, b:  731, r: 19, pal: 'lilac',  T: 150, th: 0.60 },   // skims the limb
-        { name: 'Ganymede', a: 1360, b: 1300, r: 42, pal: 'bronze', T: 300, th: 0.90 },   // crosses above the title
-        { name: 'Callisto', a: 1760, b: 1450, r: 34, pal: 'violet', T: 700, th: 2.05 },   // high
+        { name: 'Io',       a:  820, b:  566, r: 22, pal: 'peri',   T:  75, th: 2.40 },   // below the limb's top: passes behind Jupiter
+        { name: 'Europa',   a: 1060, b:  731, r: 19, pal: 'cyan',   T: 150, th: 0.60 },   // skims the limb
+        { name: 'Ganymede', a: 1360, b: 1300, r: 42, pal: 'coral',  T: 300, th: 0.90 },   // crosses above the title
+        { name: 'Callisto', a: 1760, b: 1450, r: 34, pal: 'sand',   T: 700, th: 2.05 },   // high
         { a: 2500, b: 1500, r: 26, pal: 'peri',   T:  1400, th: 2.09 },
-        { a: 2350, b: 1380, r: 13, pal: 'lilac',  T:  1200, th: 0.62 },
-        { a: 2000, b: 1420, r: 12, pal: 'lilac',  T:  -900, th: 1.72 },
-        { a: 2250, b: 1460, r:  9, pal: 'gold',   T: -1100, th: 1.30 },
-        { a: 1600, b: 1300, r: 10, pal: 'lilac',  T:   520, th: 1.20 },
-        { a: 1900, b: 1150, r: 14, pal: 'peri',   T:   820, th: 0.42 },
-        { a: 1250, b: 1010, r:  8, pal: 'violet', T:  -260, th: 2.55 },
-        { a: 2700, b: 1250, r: 11, pal: 'gold',   T:  1600, th: 2.55 }
-      ];      var still = matchMedia('(prefers-reduced-motion: reduce)').matches;
+        { a: 2350, b: 1380, r: 13, pal: 'cyan',  T:  1200, th: 0.62 },
+        { a: 2000, b: 1420, r: 12, pal: 'sand',  T:  -900, th: 1.72 },
+        { a: 2250, b: 1460, r:  9, pal: 'coral',   T: -1100, th: 1.30 },
+        { a: 1600, b: 1300, r: 10, pal: 'peri',  T:   520, th: 1.20 },
+        { a: 1900, b: 1150, r: 14, pal: 'cyan',   T:   820, th: 0.42 },
+        { a: 1250, b: 1010, r:  8, pal: 'sand', T:  -260, th: 2.55 },
+        { a: 2700, b: 1250, r: 11, pal: 'coral',   T:  1600, th: 2.55 }
+      ];
+      var still = matchMedia('(prefers-reduced-motion: reduce)').matches;
       var stage = document.getElementById('stage'), layer = document.getElementById('moons'),
           hero = stage.parentNode;
       var NS = 'http://www.w3.org/2000/svg';
@@ -279,7 +288,9 @@
         var svg = document.createElementNS(NS, 'svg');
         svg.setAttribute('class', 'moon'); svg.setAttribute('viewBox', '-1 -1 2 2');
         svg.setAttribute('width', 2 * m.r); svg.setAttribute('height', 2 * m.r);
-        svg.innerHTML = '<circle r="1" fill="' + PAL[m.pal][1] + '"/><circle cx="-.06" r=".94" fill="' + PAL[m.pal][0] + '"/>';
+        // drawn as the mark draws a moon: its shade, and its lit disc shifted left, clipped to it
+        svg.innerHTML = '<defs><clipPath id="mc' + i + '"><circle r="1"/></clipPath></defs><circle r="1" fill="' + PAL[m.pal][1] +
+          '"/><circle cx="-.12" r=".98" fill="' + PAL[m.pal][0] + '" clip-path="url(#mc' + i + ')"/>';
         layer.appendChild(svg); m.el = svg; m.born = 0.45 + i * 0.11;
       });
       var scale = 1;

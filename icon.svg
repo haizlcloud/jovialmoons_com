@@ -1,0 +1,18 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1024 1024">
+<title>Jovial Moons</title>
+<defs>
+<clipPath id="jm0"><circle cx="269.11" cy="546.00" r="207.67"/></clipPath>
+<clipPath id="jm1"><circle cx="518.45" cy="547.43" r="170.29"/></clipPath>
+<clipPath id="jm2"><circle cx="713.01" cy="484.25" r="139.57"/></clipPath>
+<clipPath id="jm3"><circle cx="848.08" cy="384.92" r="114.48"/></clipPath>
+</defs>
+<rect width="1024" height="1024" rx="229.07" fill="#1f1b3a"/>
+<circle cx="848.08" cy="384.92" r="114.48" fill="#399aa1"/>
+<circle cx="834.34" cy="384.92" r="112.19" fill="#4fd6e0" clip-path="url(#jm3)"/>
+<circle cx="713.01" cy="484.25" r="139.57" fill="#7571b8"/>
+<circle cx="696.26" cy="484.25" r="136.78" fill="#a29dff" clip-path="url(#jm2)"/>
+<circle cx="518.45" cy="547.43" r="170.29" fill="#b07546"/>
+<circle cx="498.02" cy="547.43" r="166.89" fill="#f4a261" clip-path="url(#jm1)"/>
+<circle cx="269.11" cy="546.00" r="207.67" fill="#a6503a"/>
+<circle cx="244.19" cy="546.00" r="203.51" fill="#e76f51" clip-path="url(#jm0)"/>
+</svg>
